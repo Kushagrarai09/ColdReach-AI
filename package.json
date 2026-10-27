@@ -1,0 +1,22 @@
+{
+  "name": "coldreach-ai",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w @coldreach/web",
+    "dev:api": "npm run dev -w @coldreach/api",
+    "dev:worker": "npm run dev -w @coldreach/worker",
+    "db:init": "node scripts/init-db.mjs",
+    "build": "npm run build -w @coldreach/api && npm run build -w @coldreach/worker && npm run build -w @coldreach/web"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "pg": "^8.13.1"
+  }
+}

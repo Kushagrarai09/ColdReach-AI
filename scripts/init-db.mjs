@@ -1,0 +1,10 @@
+import pg from 'pg';
+import fs from 'node:fs';
+import path from 'node:path';
+import dotenv from 'dotenv';
+dotenv.config();
+const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
+const sql = fs.readFileSync(path.resolve('db/schema.sql'), 'utf8');
+await pool.query(sql);
+console.log('Database schema initialized.');
+await pool.end();
